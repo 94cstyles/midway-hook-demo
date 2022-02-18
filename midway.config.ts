@@ -1,6 +1,7 @@
 import path from 'path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from '@midwayjs/hooks-kit';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
   // 后端根目录
@@ -13,11 +14,6 @@ export default defineConfig({
       }
   ],
   vite: {
-    plugins: [react()],
-    resolve: {
-        alias: {
-            '@enums': path.resolve(__dirname, 'src/server/enum.ts'),
-        }
-    },
-  },
+    plugins: [tsconfigPaths(), react()]
+  }
 });
