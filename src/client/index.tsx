@@ -4,6 +4,7 @@ import { useRequest } from 'ahooks';
 import { getDate } from '../server/controller/date';
 import fetchGithubStars from '../server/controller/star';
 import { getBookByParams, getBookByQuery } from '../server/controller/book';
+import { index } from '../server/controller/member';
 import './index.css';
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
   );
   const { data: book2 } = useRequest(() =>
     getBookByQuery({ query: { id: '2' } })
+  );
+  const { data: members } = useRequest(() =>
+    index()
   );
 
   return (
@@ -51,6 +55,13 @@ function App() {
             {`getBookByQuery({ query: { id: '2' } })`}
           </span>
           <span>Book title: {book2?.title}</span>
+        </p>
+        <p>
+          <span className="lambda">λ GET</span>
+          <span className="lambda">
+            {`index()`}
+          </span>
+          <span>Member count: {members?.length}</span>
         </p>
       </div>
     </div>
