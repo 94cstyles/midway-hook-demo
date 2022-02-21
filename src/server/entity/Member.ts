@@ -1,6 +1,6 @@
 import { EntityModel } from '@midwayjs/orm';
-import { Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import Basic from './Basic.abstract';
 
 
 @EntityModel()
-export default class Member {}
+export default class Member extends Basic {}
